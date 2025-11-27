@@ -1,7 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
 import Box from "./components/Box";
 import rockImg from "./assets/rock.png";
 import scissorsImg from "./assets/scissors.png";
@@ -32,13 +29,23 @@ const choice = {
 function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
-  const [result, setResult] = useState("");
+  const [userResult, setUserResult] = useState("");
+  const [computerResult, setComputerResult] = useState("");
 
   const play = (userChoice) => {
-    setUserSelect(choice[userChoice]);
-    let computerChoice = randomChoice();
-    setComputerSelect(computerChoice);
-    setResult(judgement(choice[userChoice], computerChoice));
+    const userPick = choice[userChoice];
+    const computerPick = randomChoice();
+
+    setUserSelect(userPick);
+    setComputerSelect(computerPick);
+
+    const result = judgement(userPick, computerPick);
+    setUserResult(result);
+
+    // 컴퓨터 결과는 반대
+    if (result === "승리") setComputerResult("패배");
+    else if (result === "패배") setComputerResult("승리");
+    else setComputerResult("무승부");
   };
 
   const winTable = {
@@ -49,8 +56,8 @@ function App() {
 
   const judgement = (user, computer) => {
     console.log("user", user, "computer", computer);
-    if (user.name == computer.name) return "tie";
-    return winTable[user.name] === computer.name ? "Win" : "Lose";
+    if (user.name == computer.name) return "무승부";
+    return winTable[user.name] === computer.name ? "승리" : "패배";
   };
 
   const randomChoice = () => {
@@ -64,15 +71,17 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="main">
-        <Box title="You" item={userSelect} result={result} />
-        <Box title="Computer" item={computerSelect} result={result} />
-      </div>
-      <div className="main">
-        <button onClick={() => play("scissors")}>가위</button>
-        <button onClick={() => play("rock")}>바위</button>
-        <button onClick={() => play("paper")}>보</button>
+    <div className="h-screen flex justify-center items-center bg-cyan-100">
+      <div className="flex flex-col items-center gap-8">
+        <div className="flex gap-20">
+          <Box title="나" item={userSelect} result={userResult} />
+          <Box title="컴퓨터" item={computerSelect} result={computerResult} />
+        </div>
+        <div className="flex gap-4">
+          <button onClick={() => play("scissors")}>가위</button>
+          <button onClick={() => play("rock")}>바위</button>
+          <button onClick={() => play("paper")}>보</button>
+        </div>
       </div>
     </div>
   );
