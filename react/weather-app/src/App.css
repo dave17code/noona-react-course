@@ -1,0 +1,39 @@
+/* 부트스트랩의 body 초기화를 허용하고, #root가 화면을 덮도록 설정 */
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: transparent; /* Bootstrap이 덮어쓴 흰색을 투명하게 */
+}
+
+/* ⭐️ #root 요소에 배경을 적용하여 Bootstrap의 body 스타일을 이김 */
+#root {
+  height: 100vh;
+  /* 사용자님의 스타일 적용 */
+  background: url(https://wallpapers.com/images/featured/japan-background-kpyve1mdvc9ujbm8.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-blend-mode: overlay;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.weather-box {
+  margin-bottom: 50px;
+  border: 3px solid white;
+  padding: 50px;
+  border-radius: 30px;
+  background-color: azure;
+}
+
+.weather-btn {
+  margin-left: 16px;
+}
