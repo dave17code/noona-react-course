@@ -17,6 +17,7 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const cities = ["paris", "new york", "tokyo", "seoul"];
+
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
@@ -53,9 +54,12 @@ function App() {
   return (
     <div>
       <div className="container">
-        {" "}
         <WeatherBox weather={weather} />
-        <WeatherButton cities={cities} setCity={setCity} />
+        <WeatherButton
+          getCurrentLocation={getCurrentLocation}
+          cities={cities}
+          setCity={setCity}
+        />
       </div>
     </div>
   );
