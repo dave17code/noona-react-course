@@ -1,16 +1,25 @@
+/*
+======================================================
+1. 글로벌 스타일 및 초기화 (Global Styles & Reset)
+======================================================
+*/
+
 /* 부트스트랩의 body 초기화를 허용하고, #root가 화면을 덮도록 설정 */
 html,
 body {
+  /* 2. 박스 모델 */
   height: 100vh;
   margin: 0;
   padding: 0;
+  /* 4. 비주얼 */
   background-color: transparent; /* Bootstrap이 덮어쓴 흰색을 투명하게 */
 }
 
 /* ⭐️ #root 요소에 배경을 적용하여 Bootstrap의 body 스타일을 이김 */
 #root {
+  /* 2. 박스 모델 */
   height: 100vh;
-  /* 사용자님의 스타일 적용 */
+  /* 4. 비주얼 */
   background: url(https://wallpapers.com/images/featured/japan-background-kpyve1mdvc9ujbm8.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -18,22 +27,32 @@ body {
   background-blend-mode: overlay;
 }
 
+/*
+======================================================
+2. 컴포넌트 스타일 (Component Styles)
+======================================================
+*/
 .container {
+  /* 1. 레이아웃 및 위치 (가장 먼저 배치) */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* 2. 박스 모델 */
   height: 100vh;
 }
 
 .weather-box {
+  /* 2. 박스 모델 (크기 및 공간) */
+  padding: 50px;
   margin-bottom: 50px;
   border: 3px solid black;
-  padding: 50px;
   border-radius: 30px;
+  /* 4. 비주얼 (외관) */
   background-color: azure;
 }
 
 .weather-btn {
+  /* 2. 박스 모델 */
   margin-left: 16px;
 }

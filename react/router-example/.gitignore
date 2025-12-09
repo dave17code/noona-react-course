@@ -12,10 +12,6 @@ dist
 dist-ssr
 *.local
 
-# ⭐️로컬 환경 변수 파일 추가⭐️
-.env
-.env.local
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
